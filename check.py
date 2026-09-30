@@ -1,8 +1,8 @@
 """Checks every short link on the live site: the redirect page exists, points at the right target,
-and the target itself loads. Usage: python3 check.py [base URL, default https://nathanschaumann.github.io]"""
+and the target itself loads. Usage: python3 check.py [base URL, default https://nschaumann.com]"""
 import json, sys, pathlib, urllib.request, urllib.parse
 
-base = (sys.argv[1] if len(sys.argv) > 1 else "https://nathanschaumann.github.io").rstrip("/")
+base = (sys.argv[1] if len(sys.argv) > 1 else "https://nschaumann.com").rstrip("/")
 links = json.loads((pathlib.Path(__file__).parent / "links.json").read_text())
 
 def get(url):
