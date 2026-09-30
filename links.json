@@ -1,0 +1,8 @@
+{
+  "tests": "/language-proficiency-tests/",
+  "rate": "/spoken-information-rate/",
+  "certs": "/certifications/",
+  "vocab": "/vocab-size-test/",
+  "readers": "/graded-readers/",
+  "cognates": "https://github.com/nathanschaumann/cognate-tables"
+}
