@@ -1,18 +1,114 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nathan Schaumann</title>
+<meta name="description" content="Live web apps, language assessment projects and piano videos by Nathan Schaumann.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nathan Schaumann">
+<meta property="og:description" content="Live web apps, language assessment projects and piano videos.">
+<meta property="og:url" content="https://nschaumann.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>body{font:16px/1.5 system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem;color:#1a1a1a;background:#fff}a{color:#1F4E79}li a{display:inline-block;padding:5px 0}</style>
-</head><body>
-<h1>Nathan Schaumann</h1>
-<p>Language assessment and language-learning software.</p>
-<ul>
-<li><a href="/tests/">Language proficiency tests</a></li>
-<li><a href="/certs/">My ACTFL certifications</a></li>
-<li><a href="/rate/">Spoken information-rate study</a></li>
-<li><a href="/vocab/">Vocabulary size test</a></li>
-<li><a href="/readers/">Graded readers</a></li>
-<li><a href="/cognates/">Cognate tables</a></li>
-<li><a href="https://linkedin.com/in/nathan-schaumann">LinkedIn</a></li>
-</ul>
-</body></html>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --panel: #ffffff;
+    --border: #e2e5eb;
+    --ink: #1a1a1a;
+    --muted: #5b6270;
+    --accent: #1F4E79;
+    --accent-soft: rgba(31, 78, 121, 0.14);
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 56px 24px 40px; }
+  header { margin-bottom: 44px; }
+  h1 { font-size: clamp(28px, 5.2vw, 42px); font-weight: 800; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .intro { color: var(--muted); font-size: 17px; margin: 0; max-width: 68ch; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .links a { display: inline-block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; }
+  .links a:hover, .links a:focus-visible { border-color: var(--accent); }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  section { margin-bottom: 44px; }
+  h2 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .card { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  .card:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2b4a6b, #4a6f8f); }
+  .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media .ph { font-size: 52px; font-weight: 800; color: rgba(255,255,255,.85); }
+  .media .play { position: absolute; width: 56px; height: 40px; border-radius: 10px; background: rgba(0,0,0,.65); display: flex; align-items: center; justify-content: center; }
+  .media .play::after { content: ""; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+  .body { padding: 16px 20px 18px; display: flex; flex-direction: column; flex: 1; }
+  h3 { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+  .body p { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .go { margin-top: auto; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .go:hover { text-decoration: underline; }
+  .go::after { content: ""; position: absolute; inset: 0; }
+  .go:focus-visible { outline: none; }
+  .more { margin: 16px 0 0; font-size: 15px; }
+  .more a { color: var(--accent); font-weight: 600; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; text-align: center; }
+  @media (max-width: 600px) { .wrap { padding: 32px 16px; } header { margin-bottom: 32px; } }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Nathan Schaumann</h1>
+    <p class="intro">I build working software with AI coding agents and own each tool from specification to monitoring: 20+ tools since June 2026, most of them live on the web. Before that I ran sales operations reporting and co-founded a solar company. I also write and test language assessments, and I play piano.</p>
+    <ul class="links">
+      <li><a class="primary" href="/Nathan%20Schaumann%20-%20Resume.pdf">Resume (PDF)</a></li>
+      <li><a href="https://www.linkedin.com/in/nathan-schaumann">LinkedIn</a></li>
+      <li><a href="https://www.youtube.com/@nathanschaumann">YouTube</a></li>
+      <li><a href="mailto:nathanschaumann@gmail.com">nathanschaumann@gmail.com</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section>
+      <h2>Live web apps</h2>
+      <div class="grid">
+        <div class="card"><div class="media"><img src="/images/monkeyc-speaking.jpg" alt="" loading="lazy" style="object-position:51% 70%;transform-origin:51% 70%;scale:1.1"></div><div class="body"><h3>MonkeyC Speaking</h3><p>A speaking-practice app for language learners: pronounce, shadow, translate and read aloud, scored by speech recognition, with lessons that step up in difficulty.</p><a class="go" href="https://monkeyc-speaking-production.up.railway.app" target="_blank" rel="noopener" aria-label="Open MonkeyC Speaking">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/input-tracker.jpg" alt="" loading="lazy" style="object-position:50% 0%"></div><div class="body"><h3>Input Tracker</h3><p>Logs every hour of language study across four languages. Paste a YouTube link and it pulls the speaking time and word count automatically, then charts test scores against hours studied. Sign-in required.</p><a class="go" href="https://nathanslanguagelearningapp.com" target="_blank" rel="noopener" aria-label="Open Input Tracker">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/whisper-transcribe.jpg" alt="" loading="lazy" style="object-position:50% 27%"></div><div class="body"><h3>Whisper Transcribe</h3><p>Upload an audio or video file and get a text transcript back, using OpenAI's open-source Whisper model running on the server.</p><a class="go" href="https://whisper-web-production.up.railway.app" target="_blank" rel="noopener" aria-label="Open Whisper Transcribe">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/name-that-fellow.jpg" alt="" loading="lazy" style="object-position:27% 33%;transform-origin:27% 33%;scale:1.1"></div><div class="body"><h3>Name That Fellow</h3><p>A face-to-name quiz for learning a group's names quickly, with a scoreboard and no login.</p><a class="go" href="https://web-production-d88d6.up.railway.app" target="_blank" rel="noopener" aria-label="Open Name That Fellow">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/input-output-planner.jpg" alt="" loading="lazy"></div><div class="body"><h3>Input–Output Planner</h3><p>A language-learning planner: set your timeline and daily hours, and sliders show when you'd be ready to start speaking.</p><a class="go" href="https://web-production-3ca82.up.railway.app" target="_blank" rel="noopener" aria-label="Open Input–Output Planner">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/pinyin.jpg" alt="" loading="lazy" style="object-position:25% 40%"></div><div class="body"><h3>Pinyin</h3><p>A Chinese practice tool that converts between characters, pinyin with tone marks, and English.</p><a class="go" href="https://web-production-4844a.up.railway.app/pinyin/" target="_blank" rel="noopener" aria-label="Open Pinyin">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/where-in-cities-game.jpg" alt="" loading="lazy"></div><div class="body"><h3>Where in…? Cities Game</h3><p>A geography game on a 3D globe: pin cities in Utah, the US or the world, with daily challenges and live leaderboards.</p><a class="go" href="https://cities-game.up.railway.app" target="_blank" rel="noopener" aria-label="Open Where in…? Cities Game">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/images/plane-game.jpg" alt="" loading="lazy" style="object-position:48% 0%"></div><div class="body"><h3>Plane Game</h3><p>"What's That Plane?": a browser game for identifying aircraft from real photos, with a leaderboard.</p><a class="go" href="https://web-production-e797.up.railway.app" target="_blank" rel="noopener" aria-label="Open Plane Game">Open →</a></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Language assessment</h2>
+      <div class="grid">
+        <div class="card"><div class="media"><img src="/language-proficiency-tests/og.png" alt="" loading="lazy"></div><div class="body"><h3>Language proficiency tests</h3><p>Listening, reading and speaking practice tests in Spanish, Portuguese and Russian that estimate your level before test day.</p><a class="go" href="/tests/" aria-label="Open the language proficiency tests">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/certifications/og.png" alt="" loading="lazy"></div><div class="body"><h3>My ACTFL certifications</h3><p>12 official ACTFL proficiency ratings in five languages, with each certificate and its verification number.</p><a class="go" href="/certs/" aria-label="Open my ACTFL certifications">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/spoken-information-rate/og.png" alt="" loading="lazy"></div><div class="body"><h3>Spoken information-rate study</h3><p>How much meaning per minute do Spanish, Portuguese, French, Russian and Armenian deliver? A relative comparison.</p><a class="go" href="/rate/" aria-label="Open the spoken information-rate study">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/vocab-size-test/og.png" alt="" loading="lazy"></div><div class="body"><h3>Vocabulary size test</h3><p>A 10-minute test of how many of the most common words you understand in Spanish, Portuguese, Russian or French.</p><a class="go" href="/vocab/" aria-label="Open the vocabulary size test">Open →</a></div></div>
+        <div class="card"><div class="media"><img src="/graded-readers/og.png" alt="" loading="lazy"></div><div class="body"><h3>Graded readers</h3><p>Public-domain stories retold in controlled English at five levels, each checked by an open scorer. Most have a French version.</p><a class="go" href="/readers/" aria-label="Open the graded readers">Open →</a></div></div>
+        <div class="card"><div class="media"><span class="ph">C</span></div><div class="body"><h3>Cognate tables</h3><p>111,711 word pairs that look like the same word across English, Spanish, Portuguese, French, Russian and Armenian.</p><a class="go" href="/cognates/" aria-label="Open the cognate tables">Open →</a></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Piano on YouTube</h2>
+      <div class="grid">
+        <div class="card"><div class="media"><img src="https://i.ytimg.com/vi/hpxUtMAHPC8/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></div><div class="body"><h3>Death of a Bachelor: full album mashup</h3><p>Panic! at the Disco's whole album arranged into one piano piece.</p><a class="go" href="https://www.youtube.com/watch?v=hpxUtMAHPC8" target="_blank" rel="noopener" aria-label="Watch Death of a Bachelor full album mashup on YouTube">Watch →</a></div></div>
+        <div class="card"><div class="media"><img src="https://i.ytimg.com/vi/l_pN-pLzQdQ/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></div><div class="body"><h3>Shut Up and Dance: piano duet</h3><p>Walk the Moon, arranged for two pianists, with The Piano Gal.</p><a class="go" href="https://www.youtube.com/watch?v=l_pN-pLzQdQ" target="_blank" rel="noopener" aria-label="Watch Shut Up and Dance piano duet on YouTube">Watch →</a></div></div>
+        <div class="card"><div class="media"><img src="https://i.ytimg.com/vi/v2Mq32CwetU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></div><div class="body"><h3>Chopin: "Winter Wind" étude</h3><p>Étude Op. 25 No. 11, one of Chopin's hardest studies.</p><a class="go" href="https://www.youtube.com/watch?v=v2Mq32CwetU" target="_blank" rel="noopener" aria-label="Watch Chopin Winter Wind etude on YouTube">Watch →</a></div></div>
+      </div>
+      <p class="more"><a href="https://www.youtube.com/@nathanschaumann">See all videos on my channel →</a></p>
+    </section>
+  </main>
+
+  <footer>Built with Claude</footer>
+</div>
+</body>
+</html>
